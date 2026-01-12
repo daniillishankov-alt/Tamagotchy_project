@@ -1,1 +1,0 @@
-# Tamagotchy_project
