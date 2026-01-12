@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.parameters{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    justify-content: center;
+}
+#honger{
+    color: saddlebrown;
+}
+#sleep{
+    color: cadetblue;
+}
+#happiness{
+    color: goldenrod;
+}
+.character-container{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
