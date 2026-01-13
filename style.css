@@ -1,6 +1,9 @@
 .container{
     display: flex;
     flex-direction: column;
+    max-height: fit-content;
+    max-width: 50vh;
+    margin: 0 auto;
 }
 .parameters{
     display: flex;
@@ -8,17 +11,40 @@
     gap: 2em;
     justify-content: center;
 }
+.buttons{
+    gap: 1em;
+    justify-content: center;
+    display: flex;
+    width: 10vh;
+}
+            /*------stats------*/
+.stats{
+    border: 1px solid black;
+    padding: 3px;
+}
 #honger{
     color: saddlebrown;
+    background-color: rosybrown;
 }
 #sleep{
-    color: cadetblue;
+    color: #358198;
+    background-color: #5ab9b7;
 }
 #happiness{
-    color: goldenrod;
+    color: #976400;
+    background-color: orange;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+
 }
 .character-container{
     display: flex;
     justify-content: center;
     margin: 0 auto;
+    width: 50vh;
+}
+#character-image{
+    width: 30vh;
 }
