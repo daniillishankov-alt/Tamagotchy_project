@@ -1,4 +1,5 @@
         //stats
+const character_image = document.getElementById('character-image');
 
 let honger;
 let sleep;
@@ -32,10 +33,12 @@ let decrease_interval;
 
             show_values();
 
+            character_set_status();
+
             if(honger === 0 || sleep === 0 || joy === 0){
-                document.getElementById("character-image").src="img/character_dead.png";
-                document.getElementById("character-image").alt="Pusheen cat ghost";
-                document.getElementById("character-image").style.width = "48vh"
+                character_image.src="img/character_dead.png";
+                character_image.alt="Pusheen cat ghost";
+                character_image.style.width = "48vh"
 
                 honger = 0;
                 sleep = 0;
@@ -51,12 +54,22 @@ let decrease_interval;
         }
 
         function character_set_idol(){
-            document.getElementById("character-image").src="img/character_basic.png";
+            character_image.src="img/character_basic.png";
         }
 
         function restart_decreasing() {
             clearInterval(decrease_interval);
             decrease_interval = setInterval(decreasing_values, 1500);
+        }
+
+        function character_set_status(){
+            if(honger >= 75 && sleep >= 75 &&  joy >= 75){
+                character_image.src="img/character_happy.png";
+            }else if(honger >= 35 && joy >= 35 && sleep >= 35){
+                character_image.src="img/character_basic.png";
+            }else{
+                character_image.src="img/character_sad.png";
+            }
         }
 
         start_game();
@@ -67,7 +80,7 @@ document.getElementById('feed-button').addEventListener('click', () => {
     if(!isDead){
         honger = 100;
         show_values();
-        document.getElementById("character-image").src="img/character_feed.png";
+        character_image.src="img/character_feed.png";
         setTimeout(character_set_idol, 1500);
         restart_decreasing();
     }
@@ -76,7 +89,7 @@ document.getElementById('sleep-button').addEventListener('click', () => {
     if (!isDead){
         sleep = 100;
         show_values();
-        document.getElementById("character-image").src = "img/character_sleep.png";
+        character_image.src = "img/character_sleep.png";
         setTimeout(character_set_idol, 1500);
         restart_decreasing();
     }
@@ -85,7 +98,7 @@ document.getElementById('happiness-button').addEventListener('click', () => {
     if (!isDead){
         joy = 100;
         show_values();
-        document.getElementById("character-image").src = "img/character_play.png";
+        character_image.src = "img/character_play.png";
         setTimeout(character_set_idol, 1500);
         restart_decreasing();
     }
