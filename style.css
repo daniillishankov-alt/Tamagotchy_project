@@ -18,10 +18,43 @@
     width: 10vh;
 }
             /*------stats------*/
-.stats{
+.stats {
     border: 1px solid black;
-    padding: 3px;
+    padding: 6px;
+    width: 14vh;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
 }
+
+.bar {
+    width: 100%;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    width: 100%;
+    transition: width 0.3s ease;
+}
+
+/* Цвета шкал */
+#honger .bar-fill {
+    background-color: saddlebrown;
+}
+
+#sleep .bar-fill {
+    background-color: #358198;
+}
+
+#happiness .bar-fill {
+    background-color: #c08200;
+}
+
 #honger{
     color: saddlebrown;
     background-color: rosybrown;

@@ -9,12 +9,20 @@ let isDead = false;
 
 let decrease_interval;
 
+const hongerBar = document.getElementById('honger-bar');
+const sleepBar = document.getElementById('sleep-bar');
+const happinessBar = document.getElementById('happiness-bar');
+
         //functions
 
         function show_values() {
             document.getElementById('honger-value').innerText = honger;
             document.getElementById('sleep-value').innerText = sleep;
             document.getElementById('happiness-value').innerText = joy;
+
+            hongerBar.style.width = honger + "%";
+            sleepBar.style.width = sleep + "%";
+            happinessBar.style.width = joy + "%";
         }
 
         function start_game() {
@@ -72,7 +80,17 @@ let decrease_interval;
             }
         }
 
+        function setBarColor(bar, value) {
+            if (value > 60) bar.style.filter = "brightness(1)";
+            else if (value > 30) bar.style.filter = "brightness(0.8)";
+            else bar.style.filter = "brightness(0.6)";
+        }
+
         start_game();
+
+        setBarColor(hongerBar, honger);
+        setBarColor(sleepBar, sleep);
+        setBarColor(happinessBar, joy);
 
         //buttons actions
 
