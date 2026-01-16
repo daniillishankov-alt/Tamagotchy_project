@@ -104,7 +104,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-<<<<<<< HEAD
+
     margin: 0 auto;
 }
   body {
@@ -113,13 +113,10 @@
       height: 100vh;
       background: #f0f0f0;
     }
-=======
-    margin: 20px auto;
-}
 
 #character-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
->>>>>>> 6d244880f8d233cf509aa0941a0ed1a7e1f98d46
+
