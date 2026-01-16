@@ -1,0 +1,115 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+    max-width: 50vh;
+    margin: 0 auto;
+}
+.parameters{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    justify-content: center;
+    padding: 2em;
+}
+.buttons{
+    min-width: 100px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffcc70, #ff9a3c);
+    color: #4b2e00;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.buttons:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.buttons:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+            /*------stats------*/
+
+.stats {
+    border: 1px solid black;
+    padding: 6px;
+    width: 16vh;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.bar {
+    width: 100%;
+    height: 15px;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    width: 100%;
+    transition: width 0.3s ease;
+}
+
+        /* Bars color */
+
+#honger .bar-fill {
+    background-color: saddlebrown;
+}
+
+#sleep .bar-fill {
+    background-color: #358198;
+}
+
+#happiness .bar-fill {
+    background-color: #c08200;
+}
+
+#honger{
+    color: saddlebrown;
+    background-color: rosybrown;
+}
+#sleep{
+    color: #358198;
+    background-color: #5ab9b7;
+}
+#happiness{
+    color: #976400;
+    background-color: orange;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+
+}
+.character-container {
+    width: 32vh;
+    height: 32vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    font-family: "Comic Sans MS", serif;
+}
+
+#character-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
