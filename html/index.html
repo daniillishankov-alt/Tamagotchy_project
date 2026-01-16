@@ -3,9 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Tamagotchi</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
+
+<audio id="bgm" loop>
+  <source src="../audio/cornerian-flight-academy-vgm-yume-minecraft-title-theme-lofi-439427.mp3" type="audio/mpeg">
+</audio>
+<button onclick="document.getElementById('bgm').play()">
+  Start muziek
+</button>
 
 <div class="buttons-container">
   <button id="feed-button" class="buttons">Feed</button>
@@ -39,11 +46,11 @@
 
     </div>
   <div class="character-container">
-    <img id="character-image" src="img/character_basic.png" alt="Pusheen cat image"/>
+    <img id="character-image" src="../img/character_basic.png" alt="Pusheen cat image"/>
     <div class="chat">I'm alive!</div>
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="../script/script.js"></script>
 </body>
 </html>

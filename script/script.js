@@ -54,7 +54,7 @@ let isActionPlaying = false;
             }
 
             if (honger === 0 || sleep === 0 || joy === 0) {
-                character_image.src = "img/character_dead.png";
+                character_image.src = "../img/character_dead.png";
                 character_image.alt = "Pusheen cat ghost";
 
                 honger = 0;
@@ -75,13 +75,13 @@ let isActionPlaying = false;
 
         function character_set_status(){
             if(honger >= 75 && sleep >= 75 &&  joy >= 75){
-                character_image.src="img/character_happy.png";
+                character_image.src="../img/character_happy.png";
                 character_image.alt="Happy Pusheen cat";
             }else if(honger >= 35 && joy >= 35 && sleep >= 35){
-                character_image.src="img/character_basic.png";
+                character_image.src="../img/character_basic.png";
                 character_image.alt="Pusheen cat image";
             }else{
-                character_image.src="img/character_sad.png";
+                character_image.src="../img/character_sad.png";
                 character_image.alt="Sad Pusheen cat";
             }
         }
@@ -117,7 +117,7 @@ document.getElementById('feed-button').addEventListener('click', () => {
     if(!isDead){
         honger = 100;
         show_values();
-        showAction("img/character_feed.png", "Pusheen cat eat donut");
+        showAction("../img/character_feed.png", "Pusheen cat eat donut");
         restart_decreasing();
     }
 });
@@ -125,7 +125,7 @@ document.getElementById('sleep-button').addEventListener('click', () => {
     if (!isDead){
         sleep = 100;
         show_values();
-        showAction("img/character_sleep.png", "Pusheen cat sleep");
+        showAction("../img/character_sleep.png", "Pusheen cat sleep");
         restart_decreasing();
     }
 });
@@ -133,7 +133,7 @@ document.getElementById('happiness-button').addEventListener('click', () => {
     if (!isDead){
         joy = 100;
         show_values();
-        showAction("img/character_play.png", "Pusheen cat play");
+        showAction("../img/character_play.png", "Pusheen cat play");
         restart_decreasing();
     }
 });
