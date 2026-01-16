@@ -11,4 +11,3 @@ document.getElementById('sleep-button').addEventListener('click', ()=>{
 document.getElementById('happiness-button').addEventListener('click', ()=>{
     document.getElementById('happiness-value').innerText = '100';
 });
-
