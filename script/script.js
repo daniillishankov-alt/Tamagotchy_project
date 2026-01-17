@@ -28,6 +28,11 @@ let isMusicPlaying = false;
 
 const chat = document.getElementById('chat');
 
+let chatTimeout = null;
+
+const half = 50;
+const low = 30;
+
                                            ///////////////////////////
                                          //    -   functions   -    //
                                          ///////////////////////////
@@ -66,9 +71,21 @@ const chat = document.getElementById('chat');
                 character_set_status();
             }
 
+            if (!isDead) {
+                if (honger < low) showChat("I'm starving!");
+                else if (honger < half) showChat("I'm hungry");
+
+                if (sleep < low) showChat("I need to sleep!");
+                else if (sleep < half) showChat("I'm sleepy");
+
+                if (joy < low) showChat("Play with me!");
+                else if (joy < half) showChat("I want to play!");
+            }
+
             if (honger === 0 || sleep === 0 || joy === 0) {
                 character_image.src = "../img/character_dead.png";
                 character_image.alt = "Pusheen cat ghost";
+                chat.style.display = "none";
 
                 honger = 0;
                 sleep = 0;
@@ -116,6 +133,16 @@ const chat = document.getElementById('chat');
                 isActionPlaying = false;
                 character_set_status();
             }, 1500);
+        }
+
+        function showChat(message) {
+            clearTimeout(chatTimeout);
+            chat.textContent = message;
+            chat.style.display = "block";
+
+            chatTimeout = setTimeout(() => {
+                chat.style.display = "none";
+            }, 3000);
         }
 
                                              //---------------//
