@@ -1,3 +1,6 @@
+/*--------------------------------------
+  Base Styles
+---------------------------------------*/
 body {
     margin: 0;
     min-height: 100vh;
@@ -8,54 +11,34 @@ body {
     font-family: "Comic Sans MS", "Segoe UI", sans-serif;
 }
 
+/*--------------------------------------
+  Container
+---------------------------------------*/
 .container {
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 24px;
-    padding: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    backdrop-filter: blur(10px);
     width: 100%;
     max-width: 480px;
-    margin-top: 40px;
-    margin-bottom: 24px;
-    border: 1px solid rgba(255,255,255,0.4);
+    margin: 40px 0 24px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
 }
+
+/*--------------------------------------
+  Parameters Section
+---------------------------------------*/
 .parameters {
     display: flex;
     gap: 16px;
     justify-content: center;
     padding: 16px 0;
 }
-#music-button {
-    margin-top: 20px;
-}
-.buttons{
-    min-width: 100px;
-    padding: 12px 18px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #ffcc70, #ff9a3c);
-    color: #4b2e00;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    letter-spacing: 1px;
-}
-.buttons:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-    filter: brightness(1.05);
-}
 
-.buttons:active {
-    transform: translateY(0);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-}
-.music{
-
-}
+/*--------------------------------------
+  Buttons
+---------------------------------------*/
 .buttons-container {
     display: flex;
     justify-content: center;
@@ -66,18 +49,108 @@ body {
     z-index: 10;
 }
 
-            /*------stats------*/
+.buttons {
+    min-width: 100px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffcc70, #ff9a3c);
+    color: #4b2e00;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    letter-spacing: 1px;
+}
 
+.buttons:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05);
+}
+
+.buttons:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/*--------------------------------------
+  Music Button (Optional Styling)
+---------------------------------------*/
+#music-button {
+    margin-top: 20px;
+}
+
+/*--------------------------------------
+  Character & Animation
+---------------------------------------*/
+.character-container {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#character-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    animation: idle 3s ease-in-out infinite;
+}
+
+@keyframes idle {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+}
+
+/*--------------------------------------
+  Chat Bubble
+---------------------------------------*/
+.chat {
+    display: none;
+    position: absolute;
+    bottom: 80%;
+    left: 25%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 14px;
+    border-radius: 16px;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+}
+
+.chat::after {
+    content: "";
+    position: absolute;
+    top: 75%;
+    left: 20px;
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.95);
+    transform: rotate(45deg);
+}
+
+/*--------------------------------------
+  Stats Bars
+---------------------------------------*/
 .stats {
     width: 130px;
-    border-radius: 14px;
     padding: 6px 10px;
+    border-radius: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 14px;
     font-weight: bold;
     box-sizing: border-box;
-    font-size: 14px;
 }
 
 .bar {
@@ -95,8 +168,7 @@ body {
     transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-        /* Bars color */
-
+/* Bars Colors */
 #honger .bar-fill {
     background-color: saddlebrown;
 }
@@ -109,53 +181,7 @@ body {
     background-color: #c08200;
 }
 
+/* Stats Background & Text Colors */
 #honger { background-color: #d9a8a8; color: #4b2e00; }
 #sleep { background-color: #8fd0d3; color: #03414e; }
 #happiness { background-color: #ffd27f; color: #7a5200; }
-
-@keyframes idle {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(-4px); }
-    100% { transform: translateY(0); }
-}
-#character-image {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    animation: idle 3s ease-in-out infinite;
-}
-.character-container {
-    position: relative;
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.chat {
-    display: none;
-    position: absolute;
-    bottom: 80%;
-    left: 25%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.95);
-    padding: 8px 14px;
-    border-radius: 16px;
-    font-size: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    white-space: nowrap;
-}
-.chat::after {
-    content: "";
-    position: absolute;
-    top: 75%;
-    left: 20px;
-    width: 14px;
-    height: 14px;
-    background: rgba(255, 255, 255, 0.95);
-    transform: rotate(45deg);
-}
