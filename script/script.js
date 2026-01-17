@@ -1,4 +1,8 @@
-        //stats
+
+                                               /////////////////////////
+                                             //   *   variables   *   //
+                                             /////////////////////////
+
 const character_image = document.getElementById('character-image');
 
 let honger;
@@ -17,7 +21,16 @@ let actionTimeout = null;
 
 let isActionPlaying = false;
 
-        //functions
+const bgm = document.getElementById('bgm');
+const musicButton = document.getElementById('music-button');
+
+let isMusicPlaying = false;
+
+const chat = document.getElementById('chat');
+
+                                           ///////////////////////////
+                                         //    -   functions   -    //
+                                         ///////////////////////////
 
         function show_values() {
                 document.getElementById('honger-value').innerText = honger;
@@ -105,13 +118,25 @@ let isActionPlaying = false;
             }, 1500);
         }
 
+                                             //---------------//
+                                         //   functions start   //
+                                           //---------------//
+
         start_game();
 
         setBarColor(hongerBar, honger);
         setBarColor(sleepBar, sleep);
         setBarColor(happinessBar, joy);
 
-        //buttons actions
+                                      ////////////////////////////////
+                                    //     >  buttons logica  <     //
+                                    ////////////////////////////////
+                                              //
+                                             //-------------
+                                            // stats buttons
+                                           //---------------
+                                          //
+                                      //~~~~//
 
 document.getElementById('feed-button').addEventListener('click', () => {
     if(!isDead){
@@ -121,6 +146,7 @@ document.getElementById('feed-button').addEventListener('click', () => {
         restart_decreasing();
     }
 });
+
 document.getElementById('sleep-button').addEventListener('click', () => {
     if (!isDead){
         sleep = 100;
@@ -129,6 +155,7 @@ document.getElementById('sleep-button').addEventListener('click', () => {
         restart_decreasing();
     }
 });
+
 document.getElementById('happiness-button').addEventListener('click', () => {
     if (!isDead){
         joy = 100;
@@ -136,4 +163,25 @@ document.getElementById('happiness-button').addEventListener('click', () => {
         showAction("../img/character_play.png", "Pusheen cat play");
         restart_decreasing();
     }
+});
+
+                                             //~~~~//
+                                               //
+                                              //------------
+                                             // music button
+                                            //--------------
+                                           //
+                                       //~~~~//
+
+musicButton.addEventListener('click', () => {
+    if (isMusicPlaying) {
+        bgm.pause();
+        musicButton.textContent = 'Music: OFF';
+        musicButton.classList.remove('music-on');
+    } else {
+        bgm.play();
+        musicButton.textContent = 'Music: ON';
+        musicButton.classList.add('music-on');
+    }
+    isMusicPlaying = !isMusicPlaying;
 });

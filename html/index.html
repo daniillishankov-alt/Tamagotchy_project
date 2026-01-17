@@ -10,17 +10,19 @@
 <audio id="bgm" loop>
   <source src="../audio/cornerian-flight-academy-vgm-yume-minecraft-title-theme-lofi-439427.mp3" type="audio/mpeg">
 </audio>
-<button onclick="document.getElementById('bgm').play()">
-  Start muziek
-</button>
-
-<div class="buttons-container">
-  <button id="feed-button" class="buttons">Feed</button>
-  <button id="sleep-button" class="buttons">Rest</button>
-  <button id="happiness-button" class="buttons">Play</button>
-</div>
 
 <div class="container">
+
+  <button class="buttons" id="music-button" onclick="document.getElementById('bgm').play()">
+    Music: OFF
+  </button>
+
+  <div class="buttons-container">
+    <button id="feed-button" class="buttons">Feed</button>
+    <button id="sleep-button" class="buttons">Rest</button>
+    <button id="happiness-button" class="buttons">Play</button>
+  </div>
+
     <div class="parameters">
 
       <div class="stats" id="honger">
@@ -47,7 +49,7 @@
     </div>
   <div class="character-container">
     <img id="character-image" src="../img/character_basic.png" alt="Pusheen cat image"/>
-    <div class="chat">I'm alive!</div>
+    <div class="chat" id="chat"></div>
   </div>
 </div>
 
