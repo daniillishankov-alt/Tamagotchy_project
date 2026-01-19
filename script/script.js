@@ -4,30 +4,25 @@
                                              /////////////////////////
 
 const character_image = document.getElementById('character-image');
+const hungerBar = document.getElementById('hunger-bar');
+const sleepBar = document.getElementById('sleep-bar');
+const happinessBar = document.getElementById('happiness-bar');
+const bgm = document.getElementById('bgm');
+const musicButton = document.getElementById('music-button');
+const chat = document.getElementById('chat');
+const againButton = document.getElementById('again-button');
 
-let honger;
+let hunger;
 let sleep;
 let joy;
 
 let isDead = false;
+let isActionPlaying = false;
+let isMusicPlaying = false;
 
 let decrease_interval;
 
-const hongerBar = document.getElementById('honger-bar');
-const sleepBar = document.getElementById('sleep-bar');
-const happinessBar = document.getElementById('happiness-bar');
-
 let actionTimeout = null;
-
-let isActionPlaying = false;
-
-const bgm = document.getElementById('bgm');
-const musicButton = document.getElementById('music-button');
-
-let isMusicPlaying = false;
-
-const chat = document.getElementById('chat');
-
 let chatTimeout = null;
 
 const half = 50;
@@ -38,30 +33,34 @@ const low = 30;
                                          ///////////////////////////
 
         function show_values() {
-                document.getElementById('honger-value').innerText = honger;
+                document.getElementById('hunger-value').innerText = hunger;
                 document.getElementById('sleep-value').innerText = sleep;
                 document.getElementById('happiness-value').innerText = joy;
 
-                hongerBar.style.width = honger + "%";
+                hungerBar.style.width = hunger + "%";
                 sleepBar.style.width = sleep + "%";
                 happinessBar.style.width = joy + "%";
 
-                setBarColor(hongerBar, honger);
+                setBarColor(hungerBar, hunger);
                 setBarColor(sleepBar, sleep);
                 setBarColor(happinessBar, joy);
         }
 
         function start_game() {
-            honger = 100;
+            hunger = 100;
             sleep = 100;
             joy = 100;
+
+            show_values();
+
+            isDead = false;
 
             clearInterval(decrease_interval);
             decrease_interval = setInterval(decreasing_values, 1000);
         }
 
         function decreasing_values(){
-            honger = Math.max(0, honger - 2);
+            hunger = Math.max(0, hunger - 2);
             sleep = Math.max(0, sleep - 10);
             joy = Math.max(0, joy - 3);
 
@@ -72,8 +71,8 @@ const low = 30;
             }
 
             if (!isDead) {
-                if (honger < low) showChat("I'm starving!");
-                else if (honger < half) showChat("I'm hungry");
+                if (hunger < low) showChat("I'm starving!");
+                else if (hunger < half) showChat("I'm hungry");
 
                 if (sleep < low) showChat("I need to sleep!");
                 else if (sleep < half) showChat("I'm sleepy");
@@ -82,12 +81,13 @@ const low = 30;
                 else if (joy < half) showChat("I want to play!");
             }
 
-            if (honger === 0 || sleep === 0 || joy === 0) {
+            if (hunger === 0 || sleep === 0 || joy === 0) {
                 character_image.src = "img/character_dead.png";
                 character_image.alt = "Pusheen cat ghost";
                 chat.style.display = "none";
+                againButton.style.display = "block";
 
-                honger = 0;
+                hunger = 0;
                 sleep = 0;
                 joy = 0;
 
@@ -104,10 +104,10 @@ const low = 30;
         }
 
         function character_set_status(){
-            if(honger >= 75 && sleep >= 75 &&  joy >= 75){
+            if(hunger >= 75 && sleep >= 75 &&  joy >= 75){
                 character_image.src="img/character_happy.png";
                 character_image.alt="Happy Pusheen cat";
-            }else if(honger >= 35 && joy >= 35 && sleep >= 35){
+            }else if(hunger >= 35 && joy >= 35 && sleep >= 35){
                 character_image.src="img/character_basic.png";
                 character_image.alt="Pusheen cat image";
             }else{
@@ -142,16 +142,17 @@ const low = 30;
 
             chatTimeout = setTimeout(() => {
                 chat.style.display = "none";
-            }, 3000);
+            }, 2000);
         }
 
-                                             //---------------//
-                                         //   functions start   //
-                                           //---------------//
+
+                                             //----------------//
+                                          //   functions call   //
+                                           //----------------//
 
         start_game();
 
-        setBarColor(hongerBar, honger);
+        setBarColor(hungerBar, hunger);
         setBarColor(sleepBar, sleep);
         setBarColor(happinessBar, joy);
 
@@ -167,7 +168,7 @@ const low = 30;
 
 document.getElementById('feed-button').addEventListener('click', () => {
     if(!isDead){
-        honger = 100;
+        hunger = 100;
         show_values();
         showAction("img/character_feed.png", "Pusheen cat eat donut");
         restart_decreasing();
@@ -211,4 +212,18 @@ musicButton.addEventListener('click', () => {
         musicButton.classList.add('music-on');
     }
     isMusicPlaying = !isMusicPlaying;
+});
+
+                                               //~~~~//
+                                                 //
+                                                //----------------
+                                               // Try again button
+                                              //------------------
+                                             //
+                                         //~~~~//
+
+againButton.addEventListener('click', () =>{
+    start_game();
+    character_image.src = "img/character_happy.png";
+    againButton.style.display = "none";
 });

@@ -76,10 +76,11 @@ body {
 }
 
 /*--------------------------------------
-  Music Button (Optional Styling)
+  Again-Button
 ---------------------------------------*/
-#music-button {
-    margin-top: 20px;
+
+#again-button {
+    display: none;
 }
 
 /*--------------------------------------
@@ -169,7 +170,7 @@ body {
 }
 
 /* Bars Colors */
-#honger .bar-fill {
+#hunger .bar-fill {
     background-color: saddlebrown;
 }
 
@@ -182,6 +183,6 @@ body {
 }
 
 /* Stats Background & Text Colors */
-#honger { background-color: #d9a8a8; color: #4b2e00; }
+#hunger { background-color: #d9a8a8; color: #4b2e00; }
 #sleep { background-color: #8fd0d3; color: #03414e; }
 #happiness { background-color: #ffd27f; color: #7a5200; }
