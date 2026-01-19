@@ -142,7 +142,7 @@ const low = 30;
 
             chatTimeout = setTimeout(() => {
                 chat.style.display = "none";
-            }, 2000);
+            }, 1500);
         }
 
 
@@ -171,6 +171,7 @@ document.getElementById('feed-button').addEventListener('click', () => {
         hunger = 100;
         show_values();
         showAction("img/character_feed.png", "Pusheen cat eat donut");
+        showChat("Nom-nom-nom");
         restart_decreasing();
     }
 });
@@ -180,6 +181,7 @@ document.getElementById('sleep-button').addEventListener('click', () => {
         sleep = 100;
         show_values();
         showAction("img/character_sleep.png", "Pusheen cat sleep");
+        showChat("Z-z-Z");
         restart_decreasing();
     }
 });
@@ -189,6 +191,7 @@ document.getElementById('happiness-button').addEventListener('click', () => {
         joy = 100;
         show_values();
         showAction("img/character_play.png", "Pusheen cat play");
+        showChat("Yuppie");
         restart_decreasing();
     }
 });
