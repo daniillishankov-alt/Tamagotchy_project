@@ -61,7 +61,7 @@ const low = 30;
 
         function decreasing_values(){
             hunger = Math.max(0, hunger - 2);
-            sleep = Math.max(0, sleep - 10);
+            sleep = Math.max(0, sleep - 1);
             joy = Math.max(0, joy - 3);
 
             show_values();
@@ -168,7 +168,7 @@ const low = 30;
 
 document.getElementById('feed-button').addEventListener('click', () => {
     if(!isDead){
-        hunger = 100;
+        hunger = Math.min(100, hunger + 25);
         show_values();
         showAction("img/character_feed.png", "Pusheen cat eat donut");
         showChat("Nom-nom-nom");
@@ -188,7 +188,8 @@ document.getElementById('sleep-button').addEventListener('click', () => {
 
 document.getElementById('happiness-button').addEventListener('click', () => {
     if (!isDead){
-        joy = 100;
+        joy = Math.min(100, joy + 25);
+        sleep = Math.max(0, sleep - 25);
         show_values();
         showAction("img/character_play.png", "Pusheen cat play");
         showChat("Yuppie");
