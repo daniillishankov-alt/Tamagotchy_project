@@ -11,6 +11,28 @@ const bgm = document.getElementById('bgm');
 const musicButton = document.getElementById('music-button');
 const chat = document.getElementById('chat');
 const againButton = document.getElementById('again-button');
+const emotions = [
+    "img/character_basic.png",
+    "img/character_happy.png",
+    "img/character_sad.png",
+    "img/character_dead.png",
+    "img/character_feed.png",
+    "img/character_sleep.png",
+    "img/character_play.png"
+];
+const thoughts = [
+    "I'm starving!",
+    "I'm hungry",
+    "I need to sleep!",
+    "I'm sleepy",
+    "Play with me!",
+    "I want to play!"
+];
+const reactions = [
+    "Nom-nom-nom",
+    "Z-z-Z",
+    "Yuppie"
+];
 
 let hunger;
 let sleep;
@@ -71,18 +93,18 @@ const low = 30;
             }
 
             if (!isDead) {
-                if (hunger < low) showChat("I'm starving!");
-                else if (hunger < half) showChat("I'm hungry");
+                if (hunger < low) showChat(reactions[0]);
+                else if (hunger < half) showChat(reactions[1]);
 
-                if (sleep < low) showChat("I need to sleep!");
-                else if (sleep < half) showChat("I'm sleepy");
+                if (sleep < low) showChat(reactions[2]);
+                else if (sleep < half) showChat(reactions[3]);
 
-                if (joy < low) showChat("Play with me!");
-                else if (joy < half) showChat("I want to play!");
+                if (joy < low) showChat(reactions[4]);
+                else if (joy < half) showChat(reactions[5]);
             }
 
             if (hunger === 0 || sleep === 0 || joy === 0) {
-                character_image.src = "img/character_dead.png";
+                character_image.src = emotions[3];
                 character_image.alt = "Pusheen cat ghost";
                 chat.style.display = "none";
                 againButton.style.display = "block";
@@ -105,13 +127,13 @@ const low = 30;
 
         function character_set_status(){
             if(hunger >= 75 && sleep >= 75 &&  joy >= 75){
-                character_image.src="img/character_happy.png";
+                character_image.src=emotions[1];
                 character_image.alt="Happy Pusheen cat";
             }else if(hunger >= 35 && joy >= 35 && sleep >= 35){
-                character_image.src="img/character_basic.png";
+                character_image.src=emotions[0];
                 character_image.alt="Pusheen cat image";
             }else{
-                character_image.src="img/character_sad.png";
+                character_image.src=emotions[2];
                 character_image.alt="Sad Pusheen cat";
             }
         }
@@ -168,10 +190,10 @@ const low = 30;
 
 document.getElementById('feed-button').addEventListener('click', () => {
     if(!isDead){
-        hunger = Math.min(100, hunger + 25);
+        hunger = Math.min(100, hunger + 20);
         show_values();
-        showAction("img/character_feed.png", "Pusheen cat eat donut");
-        showChat("Nom-nom-nom");
+        showAction(emotions[4], "Pusheen cat eat donut");
+        showChat(reactions[0]);
         restart_decreasing();
     }
 });
@@ -180,19 +202,19 @@ document.getElementById('sleep-button').addEventListener('click', () => {
     if (!isDead){
         sleep = 100;
         show_values();
-        showAction("img/character_sleep.png", "Pusheen cat sleep");
-        showChat("Z-z-Z");
+        showAction(emotions[5], "Pusheen cat sleep");
+        showChat(reactions[1]);
         restart_decreasing();
     }
 });
 
 document.getElementById('happiness-button').addEventListener('click', () => {
     if (!isDead){
-        joy = Math.min(100, joy + 25);
+        joy = Math.min(100, joy + 15);
         sleep = Math.max(0, sleep - 25);
         show_values();
-        showAction("img/character_play.png", "Pusheen cat play");
-        showChat("Yuppie");
+        showAction(emotions[6], "Pusheen cat play");
+        showChat(reactions[2]);
         restart_decreasing();
     }
 });
@@ -228,6 +250,6 @@ musicButton.addEventListener('click', () => {
 
 againButton.addEventListener('click', () =>{
     start_game();
-    character_image.src = "img/character_happy.png";
+    character_image.src = emotions[1];
     againButton.style.display = "none";
 });
