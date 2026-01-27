@@ -26,7 +26,7 @@ const thoughts = [
     "I need to sleep!",
     "I'm sleepy",
     "Play with me!",
-    "I want to play!"
+    "I want to play"
 ];
 const reactions = [
     "Nom-nom-nom",
@@ -93,14 +93,14 @@ const low = 30;
             }
 
             if (!isDead) {
-                if (hunger < low) showChat(reactions[0]);
-                else if (hunger < half) showChat(reactions[1]);
+                if (hunger < low) showChat(thoughts[0]);
+                else if (hunger < half) showChat(thoughts[1]);
 
-                if (sleep < low) showChat(reactions[2]);
-                else if (sleep < half) showChat(reactions[3]);
+                if (sleep < low) showChat(thoughts[2]);
+                else if (sleep < half) showChat(thoughts[3]);
 
-                if (joy < low) showChat(reactions[4]);
-                else if (joy < half) showChat(reactions[5]);
+                if (joy < low) showChat(thoughts[4]);
+                else if (joy < half) showChat(thoughts[5]);
             }
 
             if (hunger === 0 || sleep === 0 || joy === 0) {
